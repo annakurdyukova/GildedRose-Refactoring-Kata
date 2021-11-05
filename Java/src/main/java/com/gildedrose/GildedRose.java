@@ -9,7 +9,7 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            item.sellIn = item.sellIn - 1;
+            item.updateSellIn();
             item.updateQuality();
         }
     }

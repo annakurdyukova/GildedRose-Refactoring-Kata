@@ -14,14 +14,14 @@ public class BackstagePassesItem extends Item {
             return;
         }
         if (quality < 50) {
-            quality = quality + 1;
+            quality++;
 
             if (sellIn < 10 && quality < 50) {
-                quality = quality + 1;
+                quality++;
             }
 
             if (sellIn < 5 && quality < 50) {
-                quality = quality + 1;
+                quality++;
             }
         }
     }

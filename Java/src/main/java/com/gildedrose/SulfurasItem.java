@@ -11,4 +11,9 @@ public class SulfurasItem extends Item {
     public void updateQuality() {
         // do nothing
     }
+
+    @Override
+    public void updateSellIn() {
+        // do nothing
+    }
 }

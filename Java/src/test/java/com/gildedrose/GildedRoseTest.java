@@ -2,7 +2,6 @@ package com.gildedrose;
 
 import org.junit.jupiter.api.Test;
 
-import static com.gildedrose.GildedRose.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
@@ -133,5 +132,17 @@ class GildedRoseTest {
         assertEquals(80, app.items[0].quality);
         assertEquals(80, app.items[1].quality);
         assertEquals(80, app.items[2].quality);
+    }
+
+    @Test
+    void SulfurasHasConstantSellIn() {
+        Item[] items = new Item[] { new SulfurasItem(1, 80),
+            new SulfurasItem(-1, 80),
+            new SulfurasItem(0, 80) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(1, app.items[0].sellIn);
+        assertEquals(-1, app.items[1].sellIn);
+        assertEquals(0, app.items[2].sellIn);
     }
 }

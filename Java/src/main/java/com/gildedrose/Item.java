@@ -28,15 +28,19 @@ public class Item {
 
     public void updateQuality() {
         if (quality > 0) {
-            quality = quality - 1;
+            quality--;
         }
         if (sellIn < 0 && quality > 0) {
-            quality = quality - 1;
+            quality--;
         }
     }
 
     @Override
     public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
+    }
+
+    public void updateSellIn() {
+        sellIn--;
     }
 }
