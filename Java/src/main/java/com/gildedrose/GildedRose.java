@@ -6,6 +6,7 @@ class GildedRose {
     public static final String AgedBrie = "Aged Brie";
     public static final String Sulfuras = "Sulfuras, Hand of Ragnaros";
     public static final String BackstagePasses = "Backstage passes to a TAFKAL80ETC concert";
+    public static final String Conjured = "Conjured";
 
     public GildedRose(Item[] items) {
         this.items = items;
@@ -23,9 +24,20 @@ class GildedRose {
                 handleAgedBrie(item);
             } else if (item.name.equals(BackstagePasses)) {
                 handleBackstagePasses(item);
+            } else if (item.name.equals(Conjured)) {
+                handleConjured(item);
             } else {
                 handleGeneralItem(item);
             }
+        }
+    }
+
+    private void handleConjured(Item item) {
+        if (item.quality > 0) {
+            item.quality = item.quality - 2;
+        }
+        if (item.sellIn < 0 && item.quality > 0) {
+            item.quality = item.quality - 2;
         }
     }
 

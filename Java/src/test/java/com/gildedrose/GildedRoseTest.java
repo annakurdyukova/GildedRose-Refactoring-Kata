@@ -40,6 +40,30 @@ class GildedRoseTest {
     }
 
     @Test
+    void ConjuredQualityDecreaseBy2WhenSellInMoreThan0() {
+        Item[] items = new Item[] { new Item(Conjured, 2, 20) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(18, app.items[0].quality);
+    }
+
+    @Test
+    void ConjuredQualityDecreaseBy4WhenSellInLessThan0() {
+        Item[] items = new Item[] { new Item(Conjured, -2, 20) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(16, app.items[0].quality);
+    }
+
+    @Test
+    void ConjuredQualityNeverLessThanZero() {
+        Item[] items = new Item[] { new Item(Conjured, 0, 0) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(0, app.items[0].quality);
+    }
+
+    @Test
     void AgedBrieQualityNeverMoreThanFifty() {
         Item[] items = new Item[] { new Item(AgedBrie, 1, 50) };
         GildedRose app = new GildedRose(items);
