@@ -20,14 +20,19 @@ class GildedRose {
 
             item.sellIn = item.sellIn - 1;
 
-            if (item.name.equals(AgedBrie)) {
-                handleAgedBrie(item);
-            } else if (item.name.equals(BackstagePasses)) {
-                handleBackstagePasses(item);
-            } else if (item.name.equals(Conjured)) {
-                handleConjured(item);
-            } else {
-                handleGeneralItem(item);
+            switch (item.name) {
+                case AgedBrie:
+                    handleAgedBrie(item);
+                    break;
+                case BackstagePasses:
+                    handleBackstagePasses(item);
+                    break;
+                case Conjured:
+                    handleConjured(item);
+                    break;
+                default:
+                    handleGeneralItem(item);
+                    break;
             }
         }
     }
