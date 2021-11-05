@@ -2,6 +2,7 @@ package com.gildedrose;
 
 import org.junit.jupiter.api.Test;
 
+import static com.gildedrose.GildedRose.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
@@ -40,7 +41,7 @@ class GildedRoseTest {
 
     @Test
     void AgedBrieQualityNeverMoreThanFifty() {
-        Item[] items = new Item[] { new Item("Aged Brie", 1, 50) };
+        Item[] items = new Item[] { new Item(AgedBrie, 1, 50) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(50, app.items[0].quality);
@@ -48,7 +49,7 @@ class GildedRoseTest {
 
     @Test
     void AgedBrieQualityIncreaseBy2WhenSellInLessThan0() {
-        Item[] items = new Item[] { new Item("Aged Brie", -1, 40) };
+        Item[] items = new Item[] { new Item(AgedBrie, -1, 40) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(42, app.items[0].quality);
@@ -56,7 +57,7 @@ class GildedRoseTest {
 
     @Test
     void AgedBrieQualityIncreaseBy1WhenSellInMoreThan0() {
-        Item[] items = new Item[] { new Item("Aged Brie", 1, 40) };
+        Item[] items = new Item[] { new Item(AgedBrie, 1, 40) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(41, app.items[0].quality);
@@ -64,7 +65,7 @@ class GildedRoseTest {
 
     @Test
     void BackstagePassesQualityNeverMoreThanFifty() {
-        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 5, 50) };
+        Item[] items = new Item[] { new Item(BackstagePasses, 5, 50) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(50, app.items[0].quality);
@@ -72,7 +73,7 @@ class GildedRoseTest {
 
     @Test
     void BackstagePassesQualityZeroAfterConcert() {
-        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 0, 50) };
+        Item[] items = new Item[] { new Item(BackstagePasses, 0, 50) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(0, app.items[0].quality);
@@ -80,8 +81,8 @@ class GildedRoseTest {
 
     @Test
     void BackstagePassesQualityIncreaseBy2WhenLessThan10DaysLeft() {
-        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 40),
-            new Item("Backstage passes to a TAFKAL80ETC concert", 6, 20)};
+        Item[] items = new Item[] { new Item(BackstagePasses, 10, 40),
+            new Item(BackstagePasses, 6, 20)};
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(42, app.items[0].quality);
@@ -90,8 +91,8 @@ class GildedRoseTest {
 
     @Test
     void BackstagePassesQualityIncreaseBy3WhenLessThan5DaysLeft() {
-        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 5, 40),
-            new Item("Backstage passes to a TAFKAL80ETC concert", 1, 30) };
+        Item[] items = new Item[] { new Item(BackstagePasses, 5, 40),
+            new Item(BackstagePasses, 1, 30) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(43, app.items[0].quality);
@@ -100,9 +101,9 @@ class GildedRoseTest {
 
     @Test
     void SulfurasIs80Always() {
-        Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 1, 80),
-            new Item("Sulfuras, Hand of Ragnaros", -1, 80),
-            new Item("Sulfuras, Hand of Ragnaros", 0, 80) };
+        Item[] items = new Item[] { new Item(Sulfuras, 1, 80),
+            new Item(Sulfuras, -1, 80),
+            new Item(Sulfuras, 0, 80) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(80, app.items[0].quality);
