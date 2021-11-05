@@ -1,8 +1,10 @@
 package com.gildedrose;
 
 public class BackstagePassesItem extends Item {
-    public BackstagePassesItem(String name, int sellIn, int quality) {
-        super(name, sellIn, quality);
+    public static final String BackstagePasses = "Backstage passes to a TAFKAL80ETC concert";
+
+    public BackstagePassesItem(int sellIn, int quality) {
+        super(BackstagePasses, sellIn, quality);
     }
 
     @Override

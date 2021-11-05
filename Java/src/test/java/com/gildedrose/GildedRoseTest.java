@@ -41,7 +41,7 @@ class GildedRoseTest {
 
     @Test
     void ConjuredQualityDecreaseBy2WhenSellInMoreThan0() {
-        Item[] items = new Item[] { new ConjuredItem(Conjured, 2, 20) };
+        Item[] items = new Item[] { new ConjuredItem(2, 20) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(18, app.items[0].quality);
@@ -49,7 +49,7 @@ class GildedRoseTest {
 
     @Test
     void ConjuredQualityDecreaseBy4WhenSellInLessThan0() {
-        Item[] items = new Item[] { new ConjuredItem(Conjured, -2, 20) };
+        Item[] items = new Item[] { new ConjuredItem(-2, 20) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(16, app.items[0].quality);
@@ -57,7 +57,7 @@ class GildedRoseTest {
 
     @Test
     void ConjuredQualityNeverLessThanZero() {
-        Item[] items = new Item[] { new ConjuredItem(Conjured, 0, 0) };
+        Item[] items = new Item[] { new ConjuredItem(0, 0) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(0, app.items[0].quality);
@@ -65,7 +65,7 @@ class GildedRoseTest {
 
     @Test
     void AgedBrieQualityNeverMoreThanFifty() {
-        Item[] items = new Item[] { new AgedBrieItem(AgedBrie, 1, 50) };
+        Item[] items = new Item[] { new AgedBrieItem(1, 50) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(50, app.items[0].quality);
@@ -73,7 +73,7 @@ class GildedRoseTest {
 
     @Test
     void AgedBrieQualityIncreaseBy2WhenSellInLessThan0() {
-        Item[] items = new Item[] { new AgedBrieItem(AgedBrie, -1, 40) };
+        Item[] items = new Item[] { new AgedBrieItem(-1, 40) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(42, app.items[0].quality);
@@ -81,7 +81,7 @@ class GildedRoseTest {
 
     @Test
     void AgedBrieQualityIncreaseBy1WhenSellInMoreThan0() {
-        Item[] items = new Item[] { new AgedBrieItem(AgedBrie, 1, 40) };
+        Item[] items = new Item[] { new AgedBrieItem(1, 40) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(41, app.items[0].quality);
@@ -89,7 +89,7 @@ class GildedRoseTest {
 
     @Test
     void BackstagePassesQualityNeverMoreThanFifty() {
-        Item[] items = new Item[] { new BackstagePassesItem(BackstagePasses, 5, 50) };
+        Item[] items = new Item[] { new BackstagePassesItem(5, 50) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(50, app.items[0].quality);
@@ -97,7 +97,7 @@ class GildedRoseTest {
 
     @Test
     void BackstagePassesQualityZeroAfterConcert() {
-        Item[] items = new Item[] { new BackstagePassesItem(BackstagePasses, 0, 50) };
+        Item[] items = new Item[] { new BackstagePassesItem(0, 50) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(0, app.items[0].quality);
@@ -105,8 +105,8 @@ class GildedRoseTest {
 
     @Test
     void BackstagePassesQualityIncreaseBy2WhenLessThan10DaysLeft() {
-        Item[] items = new Item[] { new BackstagePassesItem(BackstagePasses, 10, 40),
-            new BackstagePassesItem(BackstagePasses, 6, 20)};
+        Item[] items = new Item[] { new BackstagePassesItem(10, 40),
+            new BackstagePassesItem(6, 20)};
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(42, app.items[0].quality);
@@ -115,8 +115,8 @@ class GildedRoseTest {
 
     @Test
     void BackstagePassesQualityIncreaseBy3WhenLessThan5DaysLeft() {
-        Item[] items = new Item[] { new BackstagePassesItem(BackstagePasses, 5, 40),
-            new BackstagePassesItem(BackstagePasses, 1, 30) };
+        Item[] items = new Item[] { new BackstagePassesItem(5, 40),
+            new BackstagePassesItem(1, 30) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(43, app.items[0].quality);
@@ -125,9 +125,9 @@ class GildedRoseTest {
 
     @Test
     void SulfurasIs80Always() {
-        Item[] items = new Item[] { new SulfurasItem(Sulfuras, 1, 80),
-            new SulfurasItem(Sulfuras, -1, 80),
-            new SulfurasItem(Sulfuras, 0, 80) };
+        Item[] items = new Item[] { new SulfurasItem(1, 80),
+            new SulfurasItem(-1, 80),
+            new SulfurasItem(0, 80) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(80, app.items[0].quality);
